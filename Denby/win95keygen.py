@@ -1,5 +1,7 @@
 import sys
 import random
+import os
+os.system("title Windows 95 KeyGen")
 def divisible_random(a,b,n):
     if b-a < n:
       raise Exception('{} is too big'.format(n))
