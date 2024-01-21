@@ -8,4 +8,4 @@ Reproduction, distribution, modification, display, or performance of any of the 
 
 # Requests for Permission
 
-For inquiries regarding permission to use any of the contents of this repository, please contact Monnorthegodlydev at moa@moahub.org or denby@denby.dev.
+For inquiries regarding permission to use any of the contents of this repository, please contact Monnorthegodlydev or palermostest25 at moa@moahub.org or denby@denby.dev.
