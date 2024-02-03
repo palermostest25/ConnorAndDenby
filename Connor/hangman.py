@@ -111,9 +111,7 @@ _________
 |
 '''
 ]
-try:
-    while True:
-        def get_uinput():
+def get_uinput():
             while True:
                 try:
                     uinput = str(input("Letter: "))
@@ -123,10 +121,52 @@ try:
                         print("Please Enter 1 Letter!")
                 except ValueError:
                     print("Please Enter A Letter!")
-            return(uinput)   
+            return(uinput)
 
+def lose(words_wrong, word_to_guess, word_length):
+    global wordswrong
+    global currentword
+    global num
+    global loops
+    global letter
+    print(hangmanart[words_wrong])
+    print(f"Thanks For Playing!\nThe Word Was {word_to_guess}.\nThe Word Length Was {word_length}\nI Hope You Get It Next Time!")
+    while True:
+        playagain = input("Press P To Play Again Or Q to Exit! ")
+        if playagain == "Q" or playagain == "q":
+            exit()
+        elif playagain == "P" or playagain == "p":
+            wordswrong = 0
+            currentword = ''
+            num = 0
+            loops = 0
+            letter = ''
+            mainloop()
 
-            
+def win(words_wrong, word_to_guess, word_length):
+    global wordswrong
+    global currentword
+    global num
+    global loops
+    global letter
+    print(f"Congrats! You Won!!!!!!\nThanks For Playing!\nThe Word Was {word_to_guess}.\nThe Word Length Was {word_length}\nYou Got {words_wrong} Words Wrong!")
+    while True:
+        playagain = input("Press P To Play Again Or Q to Exit! ")
+        if playagain == "Q" or playagain == "q":
+            exit()
+        elif playagain == "P" or playagain == "p":
+            wordswrong = 0
+            currentword = ''
+            num = 0
+            loops = 0
+            letter = ''
+            mainloop()
+
+def mainloop():
+    global currentword
+    global num
+    global word
+    try:   
         while True:
             try:
                 wordlen = int(input("Length Of Word [2-15]: "))
@@ -162,26 +202,15 @@ try:
             if prevcurrentword == currentword:
                 wordswrong += 1
             if wordswrong == 6:
-                print(hangmanart[6])
-                print("Thank You For Playing!")
-                print(f"The Word Was {word}")
-                print(f"The Word Length Was {wordlen}")
-                print("I Hope You Will Get It Next Time!")
-                input("Press Enter To Exit!")
-                break
+                lose(6, word, wordlen)
             if word == currentword:
-                print("Congrats! You Won!!!!!!")
-                print("Thank You For Playing!")
-                print(f"The Word Was {word}")
-                print(f"You Guessed {wordswrong} Letters Wrong!")
-                print(f"The Word Length Was {wordlen}")
-                input("Press Enter To Exit!")
-                break
-        break
-                        
-except KeyboardInterrupt:
-    print("\nYou Have Quited!")
-    try:
-        input("Press Enter To Exit!")
+                win(wordswrong, word, wordlen)
+                            
     except KeyboardInterrupt:
-        pass
+        print("\nYou Have Quited!")
+        try:
+            input("Press Enter To Exit!")
+            exit()
+        except KeyboardInterrupt:
+            exit()
+mainloop()
