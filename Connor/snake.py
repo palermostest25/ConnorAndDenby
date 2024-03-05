@@ -31,7 +31,7 @@ def dead():
     print("\nDead!")
     while True:
         clear_windows_input_buffer()
-        playagain = input("Play Again[Y,N] ")
+        playagain = input("Play Again[Y,N] ").strip()
         if playagain == 'y' or playagain == 'Y':
             python = sys.executable
             if os.name == 'nt':
