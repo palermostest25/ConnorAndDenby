@@ -4,6 +4,7 @@ import time
 from pynput.keyboard import Key, Listener
 import threading
 import sys
+import msvcrt
 
 time.sleep(2)
 screen = ["ctrl","#","#","#","#","#","#","#","#","#","#",
@@ -17,9 +18,14 @@ screen = ["ctrl","#","#","#","#","#","#","#","#","#","#",
           "#","#","#","#","#","#","#","#","#","#",
           "#","#","#","#","#","#","#","#","#","#"
           ]
+def clear_windows_input_buffer():
+    while msvcrt.kbhit():
+        msvcrt.getch()
+
 def dead():
     print("\nDead!")
     while True:
+        clear_windows_input_buffer()
         playagain = input("Play Again[Y,N] ")
         if playagain == 'y' or playagain == 'Y':
             python = sys.executable
