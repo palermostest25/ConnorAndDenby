@@ -4,7 +4,14 @@ import time
 from pynput.keyboard import Key, Listener
 import threading
 import sys
-import msvcrt
+if os.name == 'nt': 
+    import msvcrt
+    def clear_windows_input_buffer():
+        while msvcrt.kbhit():
+            msvcrt.getch()
+else:
+    def clear_windows_input_buffer():
+        pass
 
 time.sleep(2)
 screen = ["ctrl","#","#","#","#","#","#","#","#","#","#",
@@ -18,9 +25,6 @@ screen = ["ctrl","#","#","#","#","#","#","#","#","#","#",
           "#","#","#","#","#","#","#","#","#","#",
           "#","#","#","#","#","#","#","#","#","#"
           ]
-def clear_windows_input_buffer():
-    while msvcrt.kbhit():
-        msvcrt.getch()
 
 def dead():
     print("\nDead!")
