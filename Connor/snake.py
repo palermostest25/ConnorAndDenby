@@ -6,6 +6,7 @@ import threading
 import sys
 if os.name == 'nt': 
     import msvcrt
+    import subprocess
     def clear_windows_input_buffer():
         while msvcrt.kbhit():
             msvcrt.getch()
@@ -33,7 +34,10 @@ def dead():
         playagain = input("Play Again[Y,N] ")
         if playagain == 'y' or playagain == 'Y':
             python = sys.executable
-            os.execl(python, python, *sys.argv)
+            if os.name == 'nt':
+                subprocess.run([sys.executable] + sys.argv)
+            else:
+                os.execl(python, python, *sys.argv)
         elif playagain == 'n' or playagain == 'N':
             sys.exit()
         else:
