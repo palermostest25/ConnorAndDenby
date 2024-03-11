@@ -4,7 +4,7 @@ try:
     from pint import UnitRegistry
 except ModuleNotFoundError:
     os.system("pip install pint")
-    print("Open Again Please!")
+    print("Open This File Again Please!")
     input("Press Enter To Exit!")
     exit()
 
