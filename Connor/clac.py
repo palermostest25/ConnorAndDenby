@@ -4,6 +4,9 @@ try:
     from pint import UnitRegistry
 except ModuleNotFoundError:
     os.system("pip install pint")
+    print("Open Again Please!")
+    input("Press Enter To Exit!")
+    exit()
 
 ureg = UnitRegistry()
 pi = 3.141592653589793
