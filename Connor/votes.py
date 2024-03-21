@@ -18,8 +18,10 @@ for loop in range(len(votes)):
     vote = votes[loop]
     vote = vote.strip()
     vote = vote.split(',')
+    vote.append('end')
+    vote.append(2)
     votes[loop] = vote
-    for loop1 in range(len(vote)):
+    for loop1 in range(len(vote) - 2):
         vote[loop1] = int(vote[loop1])
     votes[loop] = vote
     print(vote)
@@ -75,12 +77,16 @@ if not winner:
         print(lowest)
         print(lowestplace)
         numstoexclude.append(lowestplace)
-        for loop7 in range(len(votes)):
-            votetochange = votes[loop7]
+        print(len(votes))
+        for votetochange in votes:
             if votetochange[0] == lowestplace:
-                votetochange[0] = votetochange[1]
+                votetochangeplace = len(votetochange) - 1
+                new_place_index = votetochange[votetochangeplace] - 1
+                print(new_place_index)
+                votetochange[0] = votetochange[new_place_index]
+                votetochange[votetochangeplace] = votetochange[votetochangeplace] + 1
                 print(votetochange)
-            votes[loop7] = votetochange
+        print(votes)
         for loop8 in range(len(votes)):
             first = votes[loop8]
             first = first[0]
