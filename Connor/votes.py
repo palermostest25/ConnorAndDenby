@@ -83,6 +83,9 @@ if not winner:
                 votetochangeplace = len(votetochange) - 1
                 new_place_index = votetochange[votetochangeplace] - 1
                 print(new_place_index)
+                if votetochange[new_place_index] in numstoexclude:
+                    votetochange[votetochangeplace] += 1
+                    new_place_index = votetochange[votetochangeplace] - 1
                 votetochange[0] = votetochange[new_place_index]
                 votetochange[votetochangeplace] = votetochange[votetochangeplace] + 1
                 print(votetochange)
